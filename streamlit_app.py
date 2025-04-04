@@ -1,6 +1,7 @@
 # Import python packages
 import streamlit as st
 from snowflake.snowpark.functions import col #import col function
+import requests #import requests for API response in line 31,32
 # Write directly to the app
 st.title(":cup_with_straw: Customize Your Smoothie! :cup_with_straw:")
 st.write("Choose the fruits you want in your custom Smoothie!")
@@ -44,8 +45,4 @@ if ingredients_list: #to ensure null instead of showing brackets(rough work of v
         session.sql(my_insert_stmt).collect()
 
         st.success('Your Smoothie is ordered,' + ' ' +name_on_order, icon="✅")
-
-
-import requests
-
 
