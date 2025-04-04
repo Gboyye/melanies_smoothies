@@ -34,6 +34,10 @@ if ingredients_list: #to ensure null instead of showing brackets(rough work of v
 #add fruits chosen(ingredients_list) to empty string(ingredients_string)
     for fruit_chosen in ingredients_list:
         ingredients_string += fruit_chosen + ' '
+
+        search_on = pd_df.loc[pd_df['FRUIT_NAME'] == fruit_chosen, 'SEARCH_ON'].ILOC[0]
+        st.write('The search value for ', fruit_chosen,'.')
+
         st.subheader(fruit_chosen + 'Nutrition Information')
         smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/" + fruit_chosen) # New section to display smoothiefroot nutrition information
         sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True) #putting API response in a dataframe for viewability
